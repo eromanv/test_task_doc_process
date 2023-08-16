@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS public.documents
 ```
 
 После запуска скрипта он должен брать 1 запись из таблицы documents (сортировка по полю recived_at ASC) по условиям:
+
 ```
     тип документа: transfer_document
     поле processed_at: is NULL
@@ -77,6 +78,7 @@ CREATE TABLE IF NOT EXISTS public.documents
     }
     ```
 Структура блока:
+
    ```
     "название поля в бд": {
         "new": "значение, на которое меняем",
