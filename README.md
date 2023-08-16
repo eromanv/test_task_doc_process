@@ -11,7 +11,7 @@
 у которых он заполнен в поле parent - содержимым упаковки
 
 
-## Создание таблиц в базе для задачи:
+## Создание таблиц в postgres для задачи:
 CREATE TABLE IF NOT EXISTS public.data
 (
     object character varying(50) COLLATE pg_catalog."default" NOT NULL,
