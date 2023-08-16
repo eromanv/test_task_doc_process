@@ -42,8 +42,8 @@ def make_data() -> dict:
 def make_documents(data: dict) -> list:
     """Генерация рандомных данных для таблицы documents в базе, вернёт list, внутри dict по каждой записи"""
     result = list()
-    doc_count = random.choice(list(range(3, 20)))
-    for _ in doc_count:
+    doc_count = random.choice(list(range(10, 20)))
+    for _ in range(doc_count):
         result.append(__make_doc(data))
     return result
 
@@ -86,4 +86,3 @@ if __name__ == '__main__':
     # данные для базы:
     data_tbl = list(data.values())
     documents_tbl = make_documents(data)
-
