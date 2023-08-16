@@ -103,7 +103,7 @@ def make_documents(_p: PsqlTools, data: dict, commit=True):
 
     if dd['document_type'] == d_type[0]:
         mdo = md['owner'] = dict()
-        mdo['new'] = mdo['old'] = random.choice(inns)
+        mdo['new'] = mdo['old'] = saler
         while mdo['old'] == mdo['new']:
             mdo['new'] = random.choice(inns)
 
