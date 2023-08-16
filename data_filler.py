@@ -8,6 +8,7 @@ inns = ['owner_1', 'owner_2', 'owner_3', 'owner_4']
 status = [1, 2, 3, 4, 10, 13]
 d_type = ['transfer_document', 'not_transfer_document']
 
+
 def make_data() -> dict:
     """Генерация рандомных данных для таблицы data в базе, вернёт list, внутри dict по каждой записи"""
     parents = set()
@@ -73,9 +74,9 @@ def __make_doc(data: dict) -> dict:
         while mdo['old'] == mdo['new']:
             mdo['new'] = random.choice(inns)
 
-    doc_data = {'doc_id': id, 
-                'recived_at': datetime.datetime.now(), 
-                'document_type': dd['document_type'], 
+    doc_data = {'doc_id': id,
+                'recived_at': datetime.datetime.now(),
+                'document_type': dd['document_type'],
                 'document_data': json.dumps(doc)}
     return doc_data
 
