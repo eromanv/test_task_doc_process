@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS public.documents
 Написать алгоритм обработки документов из таблицы documents по условиям
 
 Структура json документа из поля document_data:
+```
 {
     "document_data": {
         "document_id": "25e91d56-696e-4be6-952c-4089593877a7",
@@ -53,6 +54,7 @@ CREATE TABLE IF NOT EXISTS public.documents
         }
     }
 }
+```
 
 После запуска скрипта он должен брать 1 запись из таблицы documents (сортировка по полю recived_at ASC) по условиям:
     тип документа: transfer_document
