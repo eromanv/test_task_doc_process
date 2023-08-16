@@ -103,13 +103,13 @@ def make_documents(_p: PsqlTools, data: dict, commit=True):
 
     if dd['document_type'] == d_type[0]:
         mdo = md['owner'] = dict()
-        mdo['new'] = mdo['old'] = saler
+        mdo['new'] = mdo['old'] = random.choice(inns)
         while mdo['old'] == mdo['new']:
             mdo['new'] = random.choice(inns)
 
     if commit:
         _p.insert('documents', {'doc_id': id,
-                                'recived_at': datetime.datetime.now(),
+                                'recieved_at': datetime.datetime.now(),
                                 'document_type': dd['document_type'],
                                 'document_data': json.dumps(doc)})
 
@@ -132,7 +132,7 @@ def __make_tables(_p: PsqlTools):
                 CREATE TABLE IF NOT EXISTS public.documents
                 (
                     doc_id character varying COLLATE pg_catalog."default" NOT NULL,
-                    recived_at timestamp without time zone,
+                    recieved_at timestamp without time zone,
                     document_type character varying COLLATE pg_catalog."default",
                     document_data jsonb,
                     processed_at timestamp without time zone,
@@ -172,7 +172,7 @@ def __make_tables(_p: PsqlTools):
         }
     }
 
-    После запуска скрипта он должен брать 1 запись из таблицы documents (сортировка по полю recived_at ASC) по условиям:
+    После запуска скрипта он должен брать 1 запись из таблицы documents (сортировка по полю recieved_at ASC) по условиям:
         тип документа: transfer_document
         поле processed_at: is NULL 
     и обрабатывать содержимое поля document_data, которое содержит условное содержимое документа, по алгоритму:
