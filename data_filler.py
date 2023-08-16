@@ -1,3 +1,5 @@
+import datetime
+import json
 import uuid
 import random
 
@@ -70,7 +72,12 @@ def __make_doc(data: dict) -> dict:
         mdo['new'] = mdo['old'] = random.choice(inns)
         while mdo['old'] == mdo['new']:
             mdo['new'] = random.choice(inns)
-    return doc
+
+    doc_data = {'doc_id': id, 
+                'recived_at': datetime.datetime.now(), 
+                'document_type': dd['document_type'], 
+                'document_data': json.dumps(doc)}
+    return doc_data
 
 
 if __name__ == '__main__':
