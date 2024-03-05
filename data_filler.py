@@ -75,7 +75,7 @@ def __make_doc(data: dict) -> dict:
             mdo['new'] = random.choice(inns)
 
     doc_data = {'doc_id': id,
-                'recived_at': datetime.datetime.now(),
+                'recieved_at': datetime.datetime.now(),
                 'document_type': dd['document_type'],
                 'document_data': json.dumps(doc)}
     return doc_data
