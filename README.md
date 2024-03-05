@@ -18,6 +18,7 @@
 _Представьте, что ваше решение досталось вам и теперь нужного поддерживать и развивать_
 
 ## Создание таблиц в postgres для задачи:
+```
 CREATE TABLE IF NOT EXISTS public.data
 (
     object character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -27,7 +28,8 @@ CREATE TABLE IF NOT EXISTS public.data
     owner character varying(14) COLLATE pg_catalog."default",
     CONSTRAINT data_pkey PRIMARY KEY (object)
 )
-
+```
+```
 CREATE TABLE IF NOT EXISTS public.documents
 (
     doc_id character varying COLLATE pg_catalog."default" NOT NULL,
@@ -37,6 +39,7 @@ CREATE TABLE IF NOT EXISTS public.documents
     processed_at timestamp without time zone,
     CONSTRAINT documents_pkey PRIMARY KEY (doc_id)
 )
+```
 
 
 ## Тестовое задание:
