@@ -80,9 +80,46 @@ def __make_doc(data: dict) -> dict:
                 'document_data': json.dumps(doc)}
     return doc_data
 
+import psycopg2
+
+def insert_data_into_data_table(connection, data):
+    cursor = connection.cursor()
+    try:
+        for row in data:
+            cursor.execute(
+                "INSERT INTO public.data (object, status, level, parent, owner) VALUES (%s, %s, %s, %s, %s)",
+                (row['object'], row['status'], row['level'], row['parent'], row['owner'])
+            )
+        connection.commit()
+    except Exception as e:
+        print(f"Error inserting data into data table: {e}")
+    finally:
+        cursor.close()
+
+def insert_data_into_documents_table(connection, documents):
+    cursor = connection.cursor()
+    try:
+        for doc in documents:
+            cursor.execute(
+                "INSERT INTO public.documents (doc_id, recieved_at, document_type, document_data) VALUES (%s, %s, %s, %s)",
+                (doc['doc_id'], doc['recieved_at'], doc['document_type'], doc['document_data'])
+            )
+        connection.commit()
+    except Exception as e:
+        print(f"Error inserting data into documents table: {e}")
+    finally:
+        cursor.close()
+
 
 if __name__ == '__main__':
     data = make_data()
-    # данные для базы:
+    connection = create_connection(host="localhost", database="znak", user="postgres", password="postgres")
     data_tbl = list(data.values())
     documents_tbl = make_documents(data)
+    try:
+        # Вставка данных в таблицы
+        insert_data_into_data_table(connection, data_tbl)
+        insert_data_into_documents_table(connection, documents_tbl)
+    finally:
+        # Закрытие соединения
+        connection.close()
