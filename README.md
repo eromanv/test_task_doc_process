@@ -68,6 +68,12 @@ CREATE TABLE IF NOT EXISTS public.documents
 После запуска скрипта он должен брать из таблицы documents 1 необработанный документ (сортировка по полю recived_at ASC) с типом transfer_document и обрабатывать по алгоритму: 
 
 
+0. Создать после клонирования репозитория файл .env, с тестовыми значениями:
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_NAME=znak
+    DB_USER=postgres
+    DB_PASSWORD=postgres
 1. взять объекты из ключа objects
 2. собрать полный список объектов из таблицы data, учитывая, что в ключе objects содержатся объекты, у которых 
    есть связанные дочерние объекты (связь по полю parent таблицы datа)
