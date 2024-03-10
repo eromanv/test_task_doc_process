@@ -1,14 +1,24 @@
 import psycopg2
+from loguru import logger
 
-def create_connection(host, database, user, password):
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
+
+
+def create_connection():
     try:
         connection = psycopg2.connect(
-            host=host,
-            database=database,
-            user=user,
-            password=password
+            host=os.getenv("DB_HOST"),
+            database=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT"),
         )
+        logger.info("Connection is ok")
         return connection
     except Exception as e:
-        print(f"Error creating connection: {e}")
+        logger.info(f"Error creating connection: {e}")
         return None

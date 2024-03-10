@@ -113,7 +113,7 @@ def insert_data_into_documents_table(connection, documents):
 
 if __name__ == '__main__':
     data = make_data()
-    connection = create_connection(host="localhost", database="znak", user="postgres", password="postgres")
+    connection = create_connection()
     data_tbl = list(data.values())
     documents_tbl = make_documents(data)
     try:
